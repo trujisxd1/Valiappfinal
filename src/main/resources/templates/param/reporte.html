@@ -1,0 +1,179 @@
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link th:href="@{/Styles/365parts.css}" rel="stylesheet" type="text/css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="shortcut icon" th:href="@{/Img/logo.png}" />
+	<title>Reporte</title>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			M.AutoInit();
+		})
+	</script>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Satisfy&display=swap');
+		.tit{
+			font-family: 'Satisfy', cursive;
+		}
+		.ds{
+			font-family: 'Satisfy', cursive;
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<div class="nav-wrapper cyan darken-4">
+			<!-- Aqui se agrega el estilo p130-->
+
+			<ul id="nav-mobile" class="right hide-on-med-and-down ds">
+				<li>Buen día <b sec:authentication="name"></b></li>
+				<li></li>
+				<li><a href="#">VialidAPP MX</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<a href="#" data-target="slide-out" class="sidenav-trigger"><button
+			class="btn-large waves-effect waves-light green accent-2"
+			style="top: 0px; left:0px; position: fixed; height:100vh; border-radius: 0px, 15px, 15px, 0px;"><i
+				class="material-icons">arrow_forward</i></button></a>
+
+
+	<!-- Inicio del menu lateral -->
+
+	<ul id="slide-out" class="sidenav">
+		<li>
+			<div class="user-view">
+				<div class="background">
+					<img th:src="@{/img/estado.jpg}" style="max-width:100%; max-heigth:100%;">
+				</div>
+				<!-- Aquí es donde va la información del usuario como su foto, nombre y rol-->
+				<a href="#user"><img class="circle" th:src="@{/img/logo.png}"></a>
+				<a href="#name"><span class="white-text name">Nombre del Usuario</span></a>
+				<a href="#rol"><span class="white-text email">Rol</span></a>
+			</div>
+		</li>
+		<li><a th:href="@{/}"><i class="material-icons">whatshot</i>Ultimos reportes</a></li>
+		<li><a href="addUser"><i class="material-icons">person_add</i>Añadir Usuario</a></li>
+		<li><a href="catalogos"><i class="material-icons">create</i>Administrar Catalogos</a></li>
+		<li><a href="reportes"><i class="material-icons">add</i>Realizar un Reporte</a></li>
+		<li></li>
+		<li>
+			<div class="divider"></div>
+		</li>
+		<li><a class="subheader center tit">VialidAPP MX</a></li>
+		<li><a class="waves-effect" href="#!"><i class="material-icons">exit_to_app</i>Cerrar Sesión</a></li>
+		<li><a class="waves-effect" href="#!"><i class="material-icons">help</i>Ayuda</a></li>
+	</ul>
+
+	<!-- Fin del menu lateral -->
+
+
+
+	<div class="container">
+		<div class="modalVapp">
+			<div class="modal-content">
+				<div class="row">
+					<div class="col s12 center">
+						<h4 class="tit">Información del Reporte</h4>
+					</div>
+
+					<div class="row ">
+						
+						
+						<div class="col s12 m6">
+							<div class="card cyan darken-4 z-depth-5 rad-15">
+								<div class="card-content white-text">
+									<span class="card-title">Folio</span>
+									<p th:text="${usuarios.id}"></p>
+									<br>
+									<span class="card-title">Tipo de Reporte</span>
+									<p th:text="${usuarios.nombre}"></p>
+									<br>
+									<span class="card-title">Fecha</span>
+									<p th:text="${#calendars.format(usuarios.fecha, 'dd/MM/yyyy')}"></p>
+									<br>
+									<span class="card-title">Descripción</span>
+									<p>Aquí va la descripción del imperfecto en la vialidad</p>
+								</div>
+							</div>
+						</div>
+
+							<div class="col s12 m6">
+									<div class="card red rad-15 z-depth-5">
+										<div class="card-content white-text">
+											<p class="center"><b>Estatus:</b> Sin revisar.</p>
+										</div>
+									</div>
+							</div>
+								
+								
+						<div class="col s12 m6">
+							<div class="card cyan darken-4 z-depth-5 rad-15">
+								<div class="card-content white-text">
+									<span class="card-title">Ubicación</span>
+									<iframe
+										src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1881.5816386532792!2d-98.98994854355804!3d19.405350025287266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1e31787c44e49%3A0x49a220a001925c34!2sC.%20Ma%C3%B1anitas%2C%20Rey%20Neza%2C%2057000%20Nezahualc%C3%B3yotl%2C%20M%C3%A9x.!5e0!3m2!1ses-419!2smx!4v1681851403809!5m2!1ses-419!2smx"
+										style="border:0; width:100%; min-height: 25vh;" allowfullscreen=""
+										loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col s12">
+							<div class="card cyan darken-4 z-depth-5 rad-15">
+								<div class="card-content white-text">
+									<span class="card-title">Archivos Adjuntos</span>
+									<div class="row">
+										<div class="col s12 m4 sepUp">
+											<img class="float-left mL-1" th:src="@{'/uploads/' + ${usuarios.foto}}" th:alt="${usuarios.foto}" style="max-width:50%; max-height:50%;"/>
+										</div>
+										<div class="col s12 m4 sepUp">
+											<img class="materialboxed responsive-img" th:src="@{/img/roles.jpg}">
+										</div>
+										<div class="col s12 m4 sepUp">
+											<img class="materialboxed responsive-img" th:src="@{/img/Servicios.jpg}">
+										</div>
+										<div class="col s12 m4 sepUp">
+											<img class="materialboxed responsive-img" th:src="@{/img/reparacion.jpg}">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Caracteristica Nueva -->
+				<div class="fixed-action-btn">
+					<a class="btn-floating btn-large cyan darken-2 pulse">
+						<i class="large material-icons">more_vert</i>
+					</a>
+					<ul>
+						<li><a class="btn-floating cyan darken-4" onClick="M.toast({html: 'Aun no esta disponible esta caracteristica', classes: 'rounded teal darken-4'});"><i class="material-icons">mode_edit</i></a></li>
+						<li><a class="btn-floating red" onClick="M.toast({html: 'Aun no esta disponible esta caracteristica', classes: 'rounded teal darken-4'});"><i class="material-icons">delete</i></a></li>
+						<li><a class="btn-floating yellow darken-1" onClick="M.toast({html: 'Aun no esta disponible esta caracteristica', classes: 'rounded teal darken-4'});"><i class="material-icons">info</i></a></li>
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+
+	</div>
+	
+	
+	<footer class="page-footer cyan">
+          <div class="footer-copyright cyan darken-4">
+            <div class="container">
+            © 2023 Copyright <b class="tit">Teotl Software</b>
+            <a class="grey-text text-lighten-4 right" href="#nav-mobile">Ir Arriba</a>
+            </div>
+          </div>
+        </footer>
+</body>
